@@ -26,7 +26,7 @@ import { NotificationComponent } from '../notification/notification.component';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h1 class="auth-brand-title">TaskManager Pro</h1>
+              <h1 class="auth-brand-title">Task Manager</h1>
             </div>
 
             <!-- Tab Navigation -->
@@ -56,7 +56,7 @@ import { NotificationComponent } from '../notification/notification.component';
             <div *ngIf="currentMode === 'login'">
               <div class="auth-form-header">
                 <h2 class="auth-form-title">Welcome back</h2>
-                <p class="auth-form-subtitle">Sign in to your account to continue</p>
+                <p class="auth-form-subtitle">Sign in to your account</p>
               </div>
               
               <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="auth-form">
@@ -140,7 +140,7 @@ import { NotificationComponent } from '../notification/notification.component';
             <div *ngIf="currentMode === 'register'">
               <div class="auth-form-header">
                 <h2 class="auth-form-title">Create your account</h2>
-                <p class="auth-form-subtitle">Join thousands of users managing tasks with AI</p>
+                <p class="auth-form-subtitle">Start managing your tasks</p>
               </div>
               
               <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="auth-form">
@@ -289,7 +289,7 @@ import { NotificationComponent } from '../notification/notification.component';
                 <p class="auth-verification-subtitle">We've sent a 4-digit verification code to:</p>
                 <p class="auth-verification-email">{{ pendingEmail }}</p>
                 <p class="auth-verification-note">Check your inbox and enter the code below to complete your registration.</p>
-                <p class="auth-verification-sender">📨 Sent from: taskmanagerai&#64;gmail.com</p>
+                <p class="auth-verification-sender">📨 Check your email inbox</p>
               </div>
 
               <form (ngSubmit)="onVerifyEmail()" #verifyForm="ngForm" class="auth-form">

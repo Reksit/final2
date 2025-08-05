@@ -14,15 +14,15 @@ import { NotificationComponent } from '../notification/notification.component';
   standalone: true,
   imports: [CommonModule, NotificationComponent],
   template: `
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen bg-gray-50">
       <app-notification></app-notification>
       
-      <nav class="navbar py-4">
+      <nav class="navbar">
         <div class="container">
-          <div class="flex justify-between items-center">
-            <div class="navbar-brand">TaskManager Pro</div>
+          <div class="flex justify-between items-center py-4">
+            <div class="navbar-brand">Task Manager</div>
             <div class="flex items-center gap-4">
-              <span class="text-gray-600 font-medium">Welcome, {{ currentUser?.username }}!</span>
+              <span class="text-gray-600">{{ currentUser?.username }}</span>
               <button class="btn btn-secondary btn-sm" (click)="logout()">Logout</button>
             </div>
           </div>
@@ -32,14 +32,14 @@ import { NotificationComponent } from '../notification/notification.component';
       <div class="container">
         <div class="flex justify-between items-center py-8">
           <div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">My Tasks</h1>
-            <p class="text-gray-600">Manage your tasks with AI-powered roadmaps</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">My Tasks</h1>
+            <p class="text-gray-600">Manage your tasks and roadmaps</p>
           </div>
-          <button class="btn btn-primary btn-lg" (click)="navigateToCreateTask()">
+          <button class="btn btn-primary" (click)="navigateToCreateTask()">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
-            Create New Task
+            New Task
           </button>
         </div>
 
@@ -95,9 +95,9 @@ import { NotificationComponent } from '../notification/notification.component';
                       (click)="toggleRoadmap(task.id!)"
                     >
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       </svg>
-                      {{ isRoadmapExpanded(task.id!) ? 'Hide' : 'Show' }} Preview
+                      {{ isRoadmapExpanded(task.id!) ? 'Hide' : 'Show' }}
                     </button>
                     <button 
                       class="btn btn-primary btn-sm"
@@ -107,14 +107,14 @@ import { NotificationComponent } from '../notification/notification.component';
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                       </svg>
-                      View Full
+                      View
                     </button>
                   </div>
                   <div 
                     class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600 transition-all duration-300"
                     [class.hidden]="!isRoadmapExpanded(task.id!)"
                   >
-                    <pre class="whitespace-pre-wrap font-sans">{{ task.roadmap | slice:0:200 }}{{ task.roadmap.length > 200 ? '...' : '' }}</pre>
+                    <pre class="whitespace-pre-wrap">{{ task.roadmap | slice:0:200 }}{{ task.roadmap.length > 200 ? '...' : '' }}</pre>
                   </div>
                 </div>
                 
@@ -132,7 +132,7 @@ import { NotificationComponent } from '../notification/notification.component';
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Created: {{ task.createdAt | date:'short' }}
+                    {{ task.createdAt | date:'short' }}
                   </div>
                 </div>
                 
@@ -214,7 +214,7 @@ import { NotificationComponent } from '../notification/notification.component';
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                     </svg>
-                    View Roadmap
+                    Roadmap
                   </button>
                 </div>
                 
@@ -223,13 +223,13 @@ import { NotificationComponent } from '../notification/notification.component';
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
-                    Due: {{ task.dueDate | date:'MMM d, y h:mm a' }}
+                    {{ task.dueDate | date:'MMM d, y h:mm a' }}
                   </div>
                   <div class="flex items-center gap-2 text-success-500">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    Completed: {{ task.updatedAt | date:'short' }}
+                    {{ task.updatedAt | date:'short' }}
                   </div>
                 </div>
                 
@@ -262,28 +262,7 @@ import { NotificationComponent } from '../notification/notification.component';
       </div>
     </div>
   `,
-  styles: [`
-    .w-3 { width: 0.75rem; }
-    .h-3 { height: 0.75rem; }
-    .w-4 { width: 1rem; }
-    .h-4 { height: 1rem; }
-    .w-5 { width: 1.25rem; }
-    .h-5 { height: 1.25rem; }
-    .w-8 { width: 2rem; }
-    .h-8 { height: 2rem; }
-    .w-16 { width: 4rem; }
-    .h-16 { height: 4rem; }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .whitespace-pre-wrap { white-space: pre-wrap; }
-    .font-sans { font-family: var(--font-family); }
-    .hidden { display: none; }
-    .max-h-\[70vh\] { max-height: 70vh; }
-  `]
+  styles: []
 })
 export class DashboardComponent implements OnInit {
   currentUser: User | null = null;

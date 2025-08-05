@@ -12,15 +12,15 @@ import { NotificationComponent } from '../notification/notification.component';
   standalone: true,
   imports: [CommonModule, NotificationComponent],
   template: `
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen bg-gray-50">
       <app-notification></app-notification>
       
-      <nav class="navbar py-4">
+      <nav class="navbar">
         <div class="container">
-          <div class="flex justify-between items-center">
-            <div class="navbar-brand">TaskManager Pro</div>
+          <div class="flex justify-between items-center py-4">
+            <div class="navbar-brand">Task Manager</div>
             <div class="flex items-center gap-4">
-              <span class="text-gray-600 font-medium">Welcome, {{ currentUser?.username }}!</span>
+              <span class="text-gray-600">{{ currentUser?.username }}</span>
               <button class="btn btn-secondary btn-sm" (click)="logout()">Logout</button>
             </div>
           </div>
@@ -37,8 +37,8 @@ import { NotificationComponent } from '../notification/notification.component';
               Back to Dashboard
             </button>
             <div>
-              <h1 class="text-4xl font-bold text-gray-900 mb-2">Task Roadmap</h1>
-              <p class="text-gray-600">AI-generated roadmap for your task</p>
+              <h1 class="text-3xl font-bold text-gray-900 mb-2">Task Roadmap</h1>
+              <p class="text-gray-600">Roadmap for your task</p>
             </div>
           </div>
 
@@ -79,14 +79,14 @@ import { NotificationComponent } from '../notification/notification.component';
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-gray-900">AI-Generated Roadmap</h3>
-                    <p class="text-gray-600">Step-by-step guide to complete your task</p>
+                    <h3 class="text-xl font-bold text-gray-900">Task Roadmap</h3>
+                    <p class="text-gray-600">Step-by-step guide for your task</p>
                   </div>
                 </div>
                 
-                <div class="prose prose-lg max-w-none">
+                <div class="max-w-none">
                   <div class="bg-gray-50 rounded-lg p-6 border">
-                    <pre class="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed">{{ task.roadmap }}</pre>
+                    <pre class="whitespace-pre-wrap text-gray-700 leading-relaxed">{{ task.roadmap }}</pre>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ import { NotificationComponent } from '../notification/notification.component';
                 <h3 class="text-xl font-semibold text-gray-900 mb-2">No roadmap available</h3>
                 <p class="text-gray-600 mb-4">This task doesn't have an AI-generated roadmap yet.</p>
                 <button class="btn btn-primary" (click)="editTask()">
-                  Edit Task to Add Roadmap
+                  Add Roadmap
                 </button>
               </div>
             </div>
@@ -121,24 +121,7 @@ import { NotificationComponent } from '../notification/notification.component';
       </div>
     </div>
   `,
-  styles: [`
-    .leading-relaxed { line-height: 1.625; }
-    .whitespace-pre-wrap { white-space: pre-wrap; }
-    .prose-lg { font-size: 1.125rem; line-height: 1.7; }
-    .prose { max-width: none; }
-    .h-20 { height: 5rem; }
-    .w-20 { width: 5rem; }
-    .h-10 { height: 2.5rem; }
-    .w-10 { width: 2.5rem; }
-    .h-8 { height: 2rem; }
-    .w-8 { width: 2rem; }
-    .h-6 { height: 1.5rem; }
-    .w-6 { width: 1.5rem; }
-    .h-5 { height: 1.25rem; }
-    .w-5 { width: 1.25rem; }
-    .h-4 { height: 1rem; }
-    .w-4 { width: 1rem; }
-  `]
+  styles: []
 })
 export class RoadmapViewerComponent implements OnInit {
   currentUser: User | null = null;
