@@ -33,7 +33,7 @@ import { NotificationComponent } from '../notification/notification.component';
       </nav>
 
       <div class="container">
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-2xl mx-auto px-4">
           <div class="flex items-center gap-4 py-8">
             <button class="btn btn-outline" (click)="goBack()">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,13 +41,13 @@ import { NotificationComponent } from '../notification/notification.component';
               </svg>
               Back
             </button>
-            <div>
+            <div class="text-center flex-1">
               <h1 class="text-4xl font-bold text-gray-900 mb-2">Create New Task</h1>
               <p class="text-gray-600">Add a new task with AI-powered roadmap generation</p>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card mx-auto">
             <div class="card-body">
               <form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)" class="space-y-6">
                 <div *ngIf="errorMessage" class="alert alert-error">
@@ -174,7 +174,7 @@ import { NotificationComponent } from '../notification/notification.component';
                 <div class="flex flex-col sm:flex-row gap-4 justify-end">
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    class="btn btn-secondary w-full sm:w-auto"
                     (click)="goBack()"
                     [disabled]="isLoading"
                   >
@@ -182,7 +182,7 @@ import { NotificationComponent } from '../notification/notification.component';
                   </button>
                   <button
                     type="submit"
-                    class="btn btn-primary btn-lg"
+                    class="btn btn-primary btn-lg w-full sm:w-auto"
                     [disabled]="!taskForm.valid || isLoading"
                   >
                     <span *ngIf="isLoading" class="spinner"></span>
