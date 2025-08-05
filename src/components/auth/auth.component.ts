@@ -15,74 +15,18 @@ import { NotificationComponent } from '../notification/notification.component';
     <div class="auth-container">
       <app-notification></app-notification>
       
-      <!-- Left Side - Branding Section -->
-      <div class="auth-branding-section">
-        <div class="auth-branding-content">
-          <div class="auth-brand-logo">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <h1 class="auth-brand-title">TaskManager Pro</h1>
-          <p class="auth-brand-subtitle">AI-Powered Task Management & Smart Roadmap Generation</p>
-          
-          <div class="auth-features-list">
-            <div class="auth-feature-item">
-              <div class="auth-feature-icon">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </div>
-              <div class="auth-feature-content">
-                <h3>Smart Task Management</h3>
-                <p>Organize tasks with AI-generated roadmaps and intelligent reminders</p>
-              </div>
-            </div>
-            
-            <div class="auth-feature-item">
-              <div class="auth-feature-icon">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m0-6a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div class="auth-feature-content">
-                <h3>Real-time Reminders</h3>
-                <p>Never miss deadlines with smart email and push notifications</p>
-              </div>
-            </div>
-            
-            <div class="auth-feature-item">
-              <div class="auth-feature-icon">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                </svg>
-              </div>
-              <div class="auth-feature-content">
-                <h3>AI Roadmaps</h3>
-                <p>Get intelligent step-by-step roadmaps for complex projects</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Decorative circles -->
-        <div class="auth-decorative-circle-1"></div>
-        <div class="auth-decorative-circle-2"></div>
-      </div>
-      
-      <!-- Right Side - Auth Forms -->
-      <div class="auth-forms-section">
+      <!-- Centered Auth Forms -->
+      <div class="auth-forms-section-centered">
         <div class="auth-forms-container">
           <div class="auth-card">
-            <!-- Mobile Logo -->
-            <div class="auth-mobile-logo">
-              <div class="auth-mobile-brand-icon">
+            <!-- Logo -->
+            <div class="auth-logo">
+              <div class="auth-brand-icon">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h1 class="auth-mobile-brand-title">TaskManager Pro</h1>
+              <h1 class="auth-brand-title">TaskManager Pro</h1>
             </div>
 
             <!-- Tab Navigation -->
@@ -404,13 +348,6 @@ import { NotificationComponent } from '../notification/notification.component';
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="auth-footer">
-          <div class="auth-footer-text">
-            🔒 Secure • ⚡ Fast • 🤖 AI-Powered
           </div>
         </div>
       </div>
