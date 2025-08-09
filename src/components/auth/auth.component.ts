@@ -76,7 +76,16 @@ import { NotificationComponent } from '../notification/notification.component';
                       name="email"
                       required
                       placeholder="Enter your email"
+                      (input)="validateEmail(loginData.email)"
                     />
+                  </div>
+                  <div *ngIf="emailValidationMessage" class="auth-warning-message">
+                    <div class="auth-warning-icon">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
+                      </svg>
+                    </div>
+                    <span class="auth-warning-text">{{ emailValidationMessage }}</span>
                   </div>
                 </div>
 
@@ -160,7 +169,16 @@ import { NotificationComponent } from '../notification/notification.component';
                       name="username"
                       required
                       placeholder="Choose a username"
+                      (input)="validateUsername(registerData.username)"
                     />
+                  </div>
+                  <div *ngIf="usernameValidationMessage" class="auth-warning-message">
+                    <div class="auth-warning-icon">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
+                      </svg>
+                    </div>
+                    <span class="auth-warning-text">{{ usernameValidationMessage }}</span>
                   </div>
                 </div>
 
@@ -180,7 +198,16 @@ import { NotificationComponent } from '../notification/notification.component';
                       name="email"
                       required
                       placeholder="Enter your email"
+                      (input)="validateEmail(registerData.email)"
                     />
+                  </div>
+                  <div *ngIf="emailValidationMessage" class="auth-warning-message">
+                    <div class="auth-warning-icon">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
+                      </svg>
+                    </div>
+                    <span class="auth-warning-text">{{ emailValidationMessage }}</span>
                   </div>
                 </div>
 
@@ -366,6 +393,8 @@ export class AuthComponent {
   isPasswordValid = true;
   showLoginPassword = false;
   showRegisterPassword = false;
+  emailValidationMessage = '';
+  usernameValidationMessage = '';
 
   loginData: LoginRequest = {
     email: '',
@@ -410,6 +439,29 @@ export class AuthComponent {
     this.showRegisterPassword = !this.showRegisterPassword;
   }
 
+  validateEmail(email: string): void {
+    if (email && !email.includes('@')) {
+      this.emailValidationMessage = 'Email must contain @ symbol';
+    } else if (email && email.includes('@') && !this.isValidEmail(email)) {
+      this.emailValidationMessage = 'Please enter a valid email address';
+    } else {
+      this.emailValidationMessage = '';
+    }
+  }
+
+  validateUsername(username: string): void {
+    if (username && username.length <= 3) {
+      this.usernameValidationMessage = 'Username must be more than 3 characters';
+    } else {
+      this.usernameValidationMessage = '';
+    }
+  }
+
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   validatePassword() {
     this.isPasswordValid = this.authService.validatePassword(this.registerData.password);
   }
@@ -417,6 +469,14 @@ export class AuthComponent {
   onLogin() {
     this.isLoading = true;
     this.errorMessage = '';
+    
+    // Validate email before login
+    this.validateEmail(this.loginData.email);
+    if (this.emailValidationMessage) {
+      this.isLoading = false;
+      this.errorMessage = this.emailValidationMessage;
+      return;
+    }
 
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
@@ -443,6 +503,22 @@ export class AuthComponent {
   onRegister() {
     this.isLoading = true;
     this.errorMessage = '';
+    
+    // Validate username and email before registration
+    this.validateUsername(this.registerData.username);
+    this.validateEmail(this.registerData.email);
+    
+    if (this.usernameValidationMessage) {
+      this.isLoading = false;
+      this.errorMessage = this.usernameValidationMessage;
+      return;
+    }
+    
+    if (this.emailValidationMessage) {
+      this.isLoading = false;
+      this.errorMessage = this.emailValidationMessage;
+      return;
+    }
     
     if (!this.isPasswordValid) {
       this.errorMessage = 'Please ensure password meets requirements';

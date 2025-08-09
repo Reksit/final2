@@ -7,7 +7,8 @@ import jakarta.validation.constraints.Pattern;
 public class VerifyEmailRequest {
     
     @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
+    @Email(message = "Email must be valid and contain @ symbol")
+    @Pattern(regexp = ".*@.*", message = "Email must contain @ symbol")
     private String email;
 
     @NotBlank(message = "Verification code is required")

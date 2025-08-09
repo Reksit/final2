@@ -3,6 +3,7 @@ package com.example.manager.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -19,12 +20,13 @@ public class User {
     private Long id;
 
     @NotBlank(message = "Username is required")
-    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    @Size(min = 4, max = 50, message = "Username must be more than 3 characters")
     @Column(unique = true, nullable = false)
     private String username;
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
+    @Email(message = "Email must be valid and contain @ symbol")
+    @Pattern(regexp = ".*@.*", message = "Email must contain @ symbol")
     @Column(unique = true, nullable = false)
     private String email;
 

@@ -845,6 +845,27 @@ body {
   font-size: 0.875rem;
 }
 
+.auth-warning-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.auth-warning-icon {
+  color: var(--warning);
+  flex-shrink: 0;
+}
+
+.auth-warning-text {
+  color: #fcd34d;
+  font-size: 0.875rem;
+}
+
 .auth-submit-button {
   width: 100%;
   padding: 0.75rem 1.5rem;
